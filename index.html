@@ -3,43 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Laila(U) | From Elissa</title>
+    <title>Laila(U) • The Emerald Birthday Experience</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
+    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Canvas Confetti -->
+    <!-- Canvas Confetti CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <!-- GSAP Animation Library -->
+    <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <!-- Tailwind CSS Custom Configuration for Black & Neon Emerald Palette -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        emeraldTheme: {
-                            deepBg: '#020604',
-                            cardBg: 'rgba(6, 20, 14, 0.75)',
-                            emerald: '#10b981',
+                        theme: {
+                            bg: '#030604',
+                            surface: '#07100a',
+                            card: 'rgba(10, 24, 15, 0.75)',
+                            emerald: '#00ff88',
+                            emeraldDark: '#059669',
                             mint: '#34d399',
-                            darkEmerald: '#064e3b',
-                            glow: '#059669',
-                            neon: '#10b981'
+                            gold: '#fef08a',
+                            goldAccent: '#f59e0b'
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        sans: ['Outfit', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                        mono: ['JetBrains Mono', 'monospace']
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Cinzel', 'serif']
                     },
                     boxShadow: {
-                        'emerald-glow': '0 0 35px rgba(16, 185, 129, 0.35)',
-                        'emerald-intense': '0 0 60px rgba(52, 211, 153, 0.5)',
-                        'glass-card': '0 8px 32px 0 rgba(0, 0, 0, 0.8)'
+                        'neon-emerald': '0 0 35px rgba(0, 255, 136, 0.35)',
+                        'neon-intense': '0 0 70px rgba(0, 255, 136, 0.65)',
+                        'glass': '0 12px 40px 0 rgba(0, 0, 0, 0.85)'
                     }
                 }
             }
@@ -47,140 +48,161 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap');
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #020604;
+            font-family: 'Outfit', sans-serif;
+            background-color: #030604;
             color: #ecfdf5;
             overflow-x: hidden;
             touch-action: manipulation;
         }
 
-        /* Glassmorphism styling */
         .glass-panel {
-            background: rgba(6, 20, 14, 0.75);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(52, 211, 153, 0.22);
+            background: rgba(7, 16, 10, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 255, 136, 0.22);
         }
 
         .glass-card {
-            background: rgba(8, 28, 19, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(16, 185, 129, 0.25);
+            background: rgba(10, 24, 15, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 136, 0.18);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .glass-card:hover {
-            border-color: rgba(52, 211, 153, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.4);
+            border-color: rgba(0, 255, 136, 0.65);
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px -10px rgba(0, 255, 136, 0.4);
         }
 
-        /* Gradient Typography */
         .text-gradient-emerald {
-            background: linear-gradient(135deg, #a7f3d0 0%, #34d399 50%, #10b981 100%);
+            background: linear-gradient(135deg, #e6fffa 0%, #00ff88 50%, #059669 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .text-gradient-gold {
-            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 100%);
+            background: linear-gradient(135deg, #fff7ed 0%, #fef08a 40%, #f59e0b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Candle Flame Animation */
+        /* Flame animation */
         .flame {
-            width: 18px;
-            height: 28px;
-            background: linear-gradient(to top, #ff4500, #ffa500, #ffff00, #ffffff);
+            width: 24px;
+            height: 38px;
+            background: linear-gradient(to top, #ff4500, #ffa500, #00ff88, #ffffff);
             border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 20px #ffa500, 0 0 35px #ff4500;
+            box-shadow: 0 0 25px #00ff88, 0 0 50px #00ff88;
             animation: flicker 0.12s infinite alternate;
         }
 
         @keyframes flicker {
-            0% { transform: scale(1) rotate(-1.5deg); opacity: 0.95; }
-            100% { transform: scale(1.1) rotate(1.5deg); opacity: 1; }
+            0% { transform: scale(1) rotate(-1.5deg); opacity: 0.92; }
+            100% { transform: scale(1.18) rotate(1.5deg); opacity: 1; }
         }
 
-        /* Custom Scrollbar */
+        /* Floating Wish Banner Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-12px) scale(1.01); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(10px) scale(0.99); }
+        }
+
+        .animate-float-1 {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .animate-float-2 {
+            animation: floatReverse 7s ease-in-out infinite 0.5s;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #020604;
+            background: #030604;
         }
         ::-webkit-scrollbar-thumb {
-            background: #064e3b;
+            background: #059669;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
+            background: #00ff88;
         }
     </style>
 </head>
-<body class="selection:bg-emerald-500 selection:text-black min-h-screen flex flex-col justify-between relative">
+<body class="selection:bg-emerald-400 selection:text-black min-h-screen flex flex-col justify-between relative">
 
-    <!-- Fullscreen Fireworks Canvas -->
+    <!-- Fullscreen Interactive Fireworks Canvas -->
     <canvas id="fireworks-canvas" class="fixed inset-0 pointer-events-none z-20 w-full h-full"></canvas>
 
-    <!-- Initial 3... 2... 1... Countdown Splash Overlay -->
-    <div id="splash-overlay" class="fixed inset-0 z-50 bg-[#020604] flex flex-col items-center justify-center p-6 text-center select-none overflow-hidden transition-all duration-1000">
-        <!-- Ambient Glowing Background Rings -->
-        <div id="splash-bg-glow" class="absolute w-[30rem] h-[30rem] bg-emerald-500/20 rounded-full blur-3xl pointer-events-none transition-all duration-700 transform scale-75 opacity-60"></div>
-        <div class="absolute w-[20rem] h-[20rem] border border-emerald-500/30 rounded-full animate-ping pointer-events-none"></div>
+    <!-- Glowing Background Orbs -->
+    <div class="fixed top-1/4 -left-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-1/4 -right-32 w-96 h-96 bg-emerald-400/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
 
-        <div class="relative z-10 max-w-lg mx-auto space-y-6">
-            <div id="splash-subtitle" class="text-xs sm:text-sm font-mono tracking-widest text-emerald-400 uppercase">
-                An Exclusive Experience Prepared For
+    <!-- 3... 2... 1... Count-in Overlay -->
+    <div id="splash-overlay" class="fixed inset-0 z-50 bg-[#030604] flex flex-col items-center justify-center p-6 text-center select-none overflow-hidden transition-all duration-1000">
+        <div id="splash-bg-glow" class="absolute w-[38rem] h-[38rem] bg-emerald-500/20 rounded-full blur-3xl pointer-events-none transition-all duration-700 transform scale-75 opacity-60"></div>
+        <div class="absolute w-[26rem] h-[26rem] border border-emerald-500/30 rounded-full animate-ping pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-xl mx-auto space-y-8">
+            <div id="splash-subtitle" class="text-xs sm:text-sm font-mono tracking-[0.3em] text-emerald-400 uppercase">
+                A Dedicated Experience For
             </div>
 
-            <h2 id="splash-name" class="text-2xl sm:text-3xl font-extrabold text-white font-serif tracking-wide">
-                Laila<span class="text-emerald-400 font-mono text-xl">(U)</span>
+            <h2 id="splash-name" class="text-3xl sm:text-5xl font-extrabold text-white font-display tracking-widest">
+                LAILA<span class="text-emerald-400 font-mono text-2xl sm:text-3xl">(U)</span>
             </h2>
 
-            <!-- Big Number Display -->
+            <!-- Big Pulsing Countdown Number -->
             <div id="splash-number" class="text-8xl sm:text-9xl font-black text-gradient-emerald font-mono tracking-tighter my-4 transition-all duration-300">
-                Ready?
+                READY
             </div>
 
+            <!-- Reveal Message (Hidden initially) -->
             <div id="splash-message" class="hidden space-y-4">
-                <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight font-serif leading-tight">
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest bg-emerald-950/80 px-4 py-1.5 rounded-full border border-emerald-500/30">
+                    September 24th Birthday Experience
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight font-display leading-tight">
                     HAPPY BIRTHDAY <br/>
                     <span class="text-gradient-emerald">LAILA(U)!</span>
                 </h1>
-                <p class="text-emerald-300/80 text-sm font-mono">Crafted with love by Elissa ✨</p>
+                <p class="text-emerald-300/90 text-sm sm:text-base font-serif italic">Crafted with endless care by Elissa ✨</p>
             </div>
 
-            <!-- Start Trigger Button -->
+            <!-- Launch Button -->
             <div id="splash-action-container" class="pt-4">
-                <button id="start-btn" onclick="begin321Countdown()" class="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-black font-extrabold text-sm tracking-widest uppercase shadow-emerald-intense hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
+                <button id="start-btn" onclick="begin321Countdown()" class="px-10 py-5 rounded-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-600 text-black font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase shadow-neon-intense hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 mx-auto">
                     <i data-lucide="sparkles" class="w-5 h-5"></i>
-                    <span>Open Laila's Surprise</span>
+                    <span>Unfold Your Surprise, Laila</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Navbar Header -->
     <header class="fixed top-0 left-0 w-full z-40 px-4 sm:px-8 py-4">
-        <nav class="max-w-6xl mx-auto glass-panel rounded-2xl px-5 py-3 flex items-center justify-between border border-emerald-500/20">
+        <nav class="max-w-6xl mx-auto glass-panel rounded-2xl px-5 py-3 flex items-center justify-between border border-emerald-500/30">
             <a href="#" class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center shadow-emerald-glow">
-                    <i data-lucide="heart" class="w-5 h-5 text-black fill-current"></i>
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center shadow-neon-emerald">
+                    <i data-lucide="crown" class="w-5 h-5 text-black"></i>
                 </div>
-                <span class="text-base font-bold text-white font-serif">Laila<span class="text-emerald-400 font-mono text-sm">(U)</span></span>
+                <span class="text-base font-bold text-white font-display tracking-wider">LAILA<span class="text-emerald-400 font-mono text-xs">(U)</span></span>
             </a>
 
-            <!-- Action Controls -->
             <div class="flex items-center space-x-3">
-                <button onclick="triggerManualFirework()" class="px-3.5 py-2 rounded-xl glass-card text-emerald-400 hover:text-white hover:border-emerald-400 transition-all text-xs font-mono flex items-center gap-2" title="Launch Firework">
+                <button id="finale-toggle-btn" onclick="toggleGrandFinale()" class="px-3.5 py-2 rounded-xl glass-card text-emerald-400 hover:text-white hover:border-emerald-400 transition-all text-xs font-mono flex items-center gap-2">
                     <i data-lucide="sparkler" class="w-4 h-4"></i>
-                    <span class="hidden sm:inline">Launch Fireworks</span>
+                    <span id="finale-btn-text" class="hidden sm:inline">Pause Fireworks</span>
                 </button>
                 <button id="audio-toggle-btn" onclick="toggleAudio()" class="px-3 py-2 rounded-xl glass-card text-xs font-mono text-emerald-300 hover:border-emerald-400 transition-all flex items-center gap-2">
                     <i id="audio-icon" data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
@@ -190,220 +212,229 @@
         </nav>
     </header>
 
-    <!-- Main Content Container -->
     <main class="relative z-10 pt-28 pb-20 px-4 sm:px-8 max-w-5xl mx-auto flex-grow space-y-20">
 
-        <!-- Hero Greeting Section -->
-        <section id="hero" class="text-center space-y-6 pt-8 relative">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 text-xs font-mono tracking-widest uppercase shadow-emerald-glow">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Dedicated Celebration Protocol
+        <!-- Hero Section -->
+        <section id="hero" class="text-center space-y-8 pt-4 relative">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel border border-emerald-500/40 text-emerald-300 text-xs font-mono tracking-[0.2em] uppercase shadow-neon-emerald">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Honoring September 24th
             </div>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-serif text-white leading-tight">
-                Happy Birthday, <br/>
-                <span class="text-gradient-emerald">Laila(U)</span>
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight font-display text-white leading-tight">
+                HAPPY BIRTHDAY, <br/>
+                <span class="text-gradient-emerald">LAILA(U)</span>
             </h1>
 
-            <p class="text-emerald-100/80 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-                A modernistic space wrapped in midnight black & emerald light, designed specifically by <span class="text-emerald-400 font-semibold">Elissa</span> to honor your radiance.
+            <p class="text-emerald-100/90 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed font-serif italic">
+                "A world wrapped in midnight black & emerald glow—built with love by <span class="text-emerald-400 not-italic font-sans font-bold">Elissa</span> to celebrate your radiance."
             </p>
 
-            <div class="pt-2 flex justify-center gap-4">
-                <button onclick="scrollToSection('countdown')" class="px-6 py-3 rounded-xl bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 shadow-emerald-glow hover:scale-105 transition-all flex items-center gap-2">
-                    <i data-lucide="clock" class="w-4 h-4"></i> View Countdown
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <button onclick="scrollToSection('fireworks-section')" class="px-8 py-4 rounded-xl bg-emerald-400 text-black font-extrabold text-xs font-mono uppercase tracking-widest hover:bg-emerald-300 shadow-neon-emerald hover:scale-105 transition-all flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Fireworks & Wishes Stage
                 </button>
-                <button onclick="scrollToSection('letter')" class="px-6 py-3 rounded-xl glass-panel border border-emerald-500/40 text-emerald-300 text-sm hover:text-white hover:border-emerald-400 transition-all flex items-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4"></i> Read Letter
+                <button onclick="scrollToSection('letter')" class="px-8 py-4 rounded-xl glass-panel border border-emerald-500/40 text-emerald-300 text-xs font-mono uppercase tracking-widest hover:text-white hover:border-emerald-400 transition-all flex items-center gap-2">
+                    <i data-lucide="heart" class="w-4 h-4 text-emerald-400"></i> Read Elissa's Letter
                 </button>
             </div>
         </section>
 
-        <!-- Live Countdown Timer Section -->
-        <section id="countdown" class="glass-panel rounded-3xl p-6 sm:p-10 border border-emerald-500/30 text-center space-y-6 relative overflow-hidden">
-            <div class="absolute -right-16 -top-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="space-y-2">
-                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Marking The Moment</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white font-serif">September 24, 2026</h2>
-                <p id="countdown-status-text" class="text-xs sm:text-sm text-emerald-200/60 font-mono">Countdown to Laila(U)'s Special Day</p>
-            </div>
-
-            <!-- Timer Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto pt-2">
-                <div class="glass-card p-4 sm:p-6 rounded-2xl space-y-1">
-                    <div id="timer-days" class="text-3xl sm:text-5xl font-extrabold font-mono text-gradient-emerald">00</div>
-                    <div class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase">Days</div>
+        <!-- Fireworks Stage & FLOATING WORDS OVER LIVE FIREWORKS -->
+        <section id="fireworks-section" class="glass-panel rounded-3xl p-6 sm:p-10 border border-emerald-500/40 space-y-8 relative overflow-hidden shadow-glass">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-emerald-500/20 pb-6">
+                <div class="text-center md:text-left space-y-2">
+                    <span class="text-xs font-mono text-emerald-400 uppercase tracking-[0.25em]">Automatic Fireworks Stage</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white">Live Fireworks & Floating Wishes</h2>
+                    <p class="text-xs sm:text-sm text-emerald-200/70 font-mono">Fireworks run automatically. Click anywhere to trigger additional rocket bursts!</p>
                 </div>
-                <div class="glass-card p-4 sm:p-6 rounded-2xl space-y-1">
-                    <div id="timer-hours" class="text-3xl sm:text-5xl font-extrabold font-mono text-gradient-emerald">00</div>
-                    <div class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase">Hours</div>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-2xl space-y-1">
-                    <div id="timer-minutes" class="text-3xl sm:text-5xl font-extrabold font-mono text-gradient-emerald">00</div>
-                    <div class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase">Minutes</div>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-2xl space-y-1">
-                    <div id="timer-seconds" class="text-3xl sm:text-5xl font-extrabold font-mono text-gradient-emerald">00</div>
-                    <div class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase">Seconds</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Heartfelt Letter Capsule from Elissa -->
-        <section id="letter" class="glass-panel rounded-3xl p-6 sm:p-12 border border-emerald-500/30 space-y-8 relative">
-            <div class="flex items-center justify-between border-b border-emerald-500/20 pb-4">
                 <div class="flex items-center gap-3">
-                    <i data-lucide="heart-handshake" class="w-6 h-6 text-emerald-400"></i>
-                    <h2 class="text-xl sm:text-2xl font-bold font-serif text-white">A Letter From Elissa</h2>
-                </div>
-                <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">SPECIAL MESSAGE</span>
-            </div>
-
-            <!-- Letter Content -->
-            <div class="space-y-6 text-gray-200 font-sans text-base sm:text-lg leading-relaxed sm:px-4">
-                <p>
-                    <span class="text-2xl font-serif text-emerald-400">Dearest Laila(U),</span>
-                </p>
-                <p>
-                    On this incredible day, I wanted to create a place as unique, glowing, and unforgettable as you are to me. In a world full of noise, your presence is a rare kind of calm and joy.
-                </p>
-                <p>
-                    Thank you for being such a wonderful person, for every smile we’ve shared, and for being someone I can always count on. You bring light wherever you go, and I hope this year returns all that beauty back to you tenfold.
-                </p>
-                <p>
-                    May September 24th mark the beginning of your best year yet—filled with health, happiness, peace, and endless reasons to celebrate.
-                </p>
-                <div class="pt-6 border-t border-emerald-500/20 text-right font-serif italic text-emerald-300">
-                    With all my heart,<br/>
-                    <span class="text-xl font-bold not-italic text-emerald-400 font-sans">Elissa ✨</span>
+                    <button onclick="triggerManualFirework()" class="px-6 py-3 rounded-xl bg-emerald-500/20 border border-emerald-400/60 text-emerald-300 hover:text-white hover:bg-emerald-400 hover:text-black font-mono text-xs uppercase tracking-widest transition-all flex items-center gap-2">
+                        <i data-lucide="flame" class="w-4 h-4"></i> Extra Firework Burst
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <!-- Interactive Memory & Qualities Capsule -->
-        <section class="space-y-8">
-            <div class="text-center space-y-2">
-                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Interactive Memory Capsule</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-white">Why You Are So Cherished</h2>
-                <p class="text-xs sm:text-sm text-emerald-200/60">Click on any card to unlock a memory note</p>
-            </div>
+            <!-- DYNAMIC FLOATING WORDS BANNER DIRECTLY OVER FIREWORKS STAGE -->
+            <div class="relative min-h-[360px] sm:min-h-[420px] rounded-2xl bg-black/60 border border-emerald-500/30 p-6 sm:p-10 flex flex-col justify-center items-center gap-8 overflow-hidden backdrop-blur-sm shadow-inner">
+                
+                <!-- Ambient Stage Background Glow -->
+                <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/30 via-black/80 to-emerald-950/30 pointer-events-none"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div onclick="toggleCard(this)" class="glass-card rounded-2xl p-6 space-y-4 cursor-pointer select-none group">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                        <i data-lucide="sparkles" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white font-serif flex items-center justify-between">
-                        <span>Genuine Spirit</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-400 transition-transform duration-300 card-arrow"></i>
-                    </h3>
-                    <p class="text-xs sm:text-sm text-emerald-100/70 leading-relaxed">
-                        You carry a warmth that immediately reassures people around you. Your sincerity makes you truly one of a kind.
-                    </p>
-                    <div class="hidden card-secret pt-3 border-t border-emerald-500/20 text-xs text-emerald-300 font-mono">
-                        "Elissa's Note: Never change your beautiful, honest soul."
+                <!-- Floating Phrase 1 Banner -->
+                <div class="relative z-10 w-full max-w-2xl animate-float-1">
+                    <div class="glass-panel p-6 sm:p-8 rounded-2xl border-2 border-emerald-400/80 shadow-neon-emerald bg-black/80 text-center space-y-2 group hover:scale-105 transition-all duration-500">
+                        <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i> Wish for Laila(U)
+                        </div>
+                        <p class="text-xl sm:text-3xl font-serif text-white font-bold leading-relaxed drop-shadow-[0_0_15px_rgba(0,255,136,0.6)]">
+                            "Happy Birthday! Wishing you a fantastic day and an amazing year ahead."
+                        </p>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div onclick="toggleCard(this)" class="glass-card rounded-2xl p-6 space-y-4 cursor-pointer select-none group">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                        <i data-lucide="smile" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white font-serif flex items-center justify-between">
-                        <span>Laughter & Joy</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-400 transition-transform duration-300 card-arrow"></i>
-                    </h3>
-                    <p class="text-xs sm:text-sm text-emerald-100/70 leading-relaxed">
-                        Every single time we laugh together, it reminds me how effortless and precious true friendship is.
-                    </p>
-                    <div class="hidden card-secret pt-3 border-t border-emerald-500/20 text-xs text-emerald-300 font-mono">
-                        "Elissa's Note: Here's to a million more inside jokes and adventures!"
+                <!-- Floating Phrase 2 Banner -->
+                <div class="relative z-10 w-full max-w-2xl animate-float-2">
+                    <div class="glass-panel p-6 sm:p-8 rounded-2xl border-2 border-emerald-400/80 shadow-neon-emerald bg-black/80 text-center space-y-2 group hover:scale-105 transition-all duration-500">
+                        <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest">
+                            <i data-lucide="heart" class="w-4 h-4 text-emerald-400"></i> From Elissa
+                        </div>
+                        <p class="text-xl sm:text-3xl font-serif text-emerald-300 font-medium italic leading-relaxed drop-shadow-[0_0_15px_rgba(0,255,136,0.5)]">
+                            "Hope your special day brings you all the happiness you deserve!"
+                        </p>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div onclick="toggleCard(this)" class="glass-card rounded-2xl p-6 space-y-4 cursor-pointer select-none group">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                        <i data-lucide="shield-check" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white font-serif flex items-center justify-between">
-                        <span>Unwavering Strength</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-400 transition-transform duration-300 card-arrow"></i>
-                    </h3>
-                    <p class="text-xs sm:text-sm text-emerald-100/70 leading-relaxed">
-                        Your resilience and graceful attitude toward every challenge are endlessly inspiring to watch.
-                    </p>
-                    <div class="hidden card-secret pt-3 border-t border-emerald-500/20 text-xs text-emerald-300 font-mono">
-                        "Elissa's Note: I'm so proud of everything you are achieving."
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Interactive Virtual Birthday Candle Section -->
-        <section id="candle-section" class="glass-panel rounded-3xl p-8 sm:p-12 border border-emerald-500/30 text-center space-y-8 relative">
+        <!-- Smart Date Engine Section -->
+        <section id="countdown" class="glass-panel rounded-3xl p-8 sm:p-12 border border-emerald-500/30 text-center space-y-8 relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
             <div class="space-y-2">
-                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Interactive Ritual</span>
-                <h2 class="text-2xl sm:text-4xl font-bold font-serif text-white">Make A Wish, Laila!</h2>
-                <p class="text-xs sm:text-sm text-emerald-200/70">Tap or click the candle flame to blow it out and receive your secret blessing.</p>
+                <span id="timer-badge-label" class="text-xs font-mono text-emerald-400 uppercase tracking-[0.25em]">September 24th Celebration</span>
+                <h2 id="timer-main-title" class="text-3xl sm:text-5xl font-extrabold text-white font-display">September 24, 2026</h2>
+                <p id="countdown-status-text" class="text-xs sm:text-sm text-emerald-200/70 font-mono">Smart timer tuned for Laila(U)'s special moment</p>
             </div>
 
-            <!-- Candle Visual Container -->
-            <div class="py-8 flex flex-col items-center justify-center cursor-pointer group" onclick="blowOutCandle()">
+            <!-- Timer Display Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-2">
+                <div class="glass-card p-6 rounded-2xl space-y-1">
+                    <div id="timer-days" class="text-4xl sm:text-6xl font-black font-mono text-gradient-emerald">00</div>
+                    <div id="label-days" class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase tracking-widest">Days</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1">
+                    <div id="timer-hours" class="text-4xl sm:text-6xl font-black font-mono text-gradient-emerald">00</div>
+                    <div id="label-hours" class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase tracking-widest">Hours</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1">
+                    <div id="timer-minutes" class="text-4xl sm:text-6xl font-black font-mono text-gradient-emerald">00</div>
+                    <div id="label-minutes" class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase tracking-widest">Minutes</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1">
+                    <div id="timer-seconds" class="text-4xl sm:text-6xl font-black font-mono text-gradient-emerald">00</div>
+                    <div id="label-seconds" class="text-[10px] sm:text-xs font-mono text-emerald-400 uppercase tracking-widest">Seconds</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heartfelt Birthday Letter from Elissa -->
+        <section id="letter" class="glass-panel rounded-3xl p-8 sm:p-14 border border-emerald-500/40 space-y-10 relative overflow-hidden shadow-glass">
+            <div class="flex items-center justify-between border-b border-emerald-500/20 pb-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-400">
+                        <i data-lucide="mail-open" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold font-display text-white">Words From Elissa</h2>
+                        <span class="text-xs font-mono text-emerald-400">Written with pure love for Laila(U)</span>
+                    </div>
+                </div>
+                <button onclick="copyWishesText()" class="text-xs font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-500/40 px-4 py-2 rounded-full hover:border-emerald-400 flex items-center gap-2">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span id="copy-btn-text">Copy Wishes</span>
+                </button>
+            </div>
+
+            <!-- Letter Body -->
+            <div class="space-y-6 text-emerald-50/90 font-sans text-base sm:text-xl leading-relaxed">
+                <p>
+                    <span class="text-3xl font-serif text-emerald-400">Dearest Laila,</span>
+                </p>
+
+                <p>
+                    Unfold your surprise, my dear Laila... On this birthday, I wanted to build a digital sanctuary as sleek, deep, and brilliant as you are. You love black and emerald green—colors of depth, elegance, growth, and royalty—and that is exactly what you embody every single day.
+                </p>
+
+                <!-- Crucial Highlighted Reassurance Box regarding Financial Abundance & Money -->
+                <div class="glass-card p-6 sm:p-8 rounded-2xl border-l-4 border-l-emerald-400 bg-emerald-950/40 my-8 space-y-3">
+                    <div class="flex items-center gap-2 text-gradient-gold text-xs font-mono font-bold uppercase tracking-widest">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+                        <span>A Promise & Affirmation For Your Journey</span>
+                    </div>
+                    <p class="text-white font-serif text-lg sm:text-2xl italic leading-snug">
+                        "Remember, <strong class="text-emerald-400 not-italic font-sans">money will come and go</strong>, but abundance is already on its way to you. Keep shining bright!"
+                    </p>
+                </div>
+
+                <p>
+                    Thank you for being such an unforgettable presence in my life. Your strength inspires me, your laughter fills every room, and your loyalty means the world. Step into this new year with total peace of mind and complete confidence in your power.
+                </p>
+
+                <p>
+                    May your path ahead be paved with abundance, good health, endless smiles, and every single blessing you deserve.
+                </p>
+
+                <div class="pt-8 border-t border-emerald-500/20 text-right space-y-1">
+                    <p class="text-xs font-mono text-emerald-400 uppercase tracking-widest">With endless love & admiration,</p>
+                    <p class="text-2xl sm:text-3xl font-display font-bold text-white">Elissa ✨</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Candle Ritual & Unfold Gift -->
+        <section id="candle-section" class="glass-panel rounded-3xl p-8 sm:p-14 border border-emerald-500/40 text-center space-y-8 relative overflow-hidden">
+            <div class="space-y-2 max-w-xl mx-auto">
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-[0.25em]">Interactive Ritual</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white">Make Your Birthday Wish</h2>
+                <p class="text-xs sm:text-sm text-emerald-200/70">Click or tap the flickering emerald flame to blow it out and unlock your secret birthday gift from Elissa.</p>
+            </div>
+
+            <!-- Candle Visual -->
+            <div class="py-10 flex flex-col items-center justify-center cursor-pointer group" onclick="blowOutCandle()">
                 <!-- Flame -->
                 <div id="candle-flame" class="flame transition-all duration-500 group-hover:scale-125 mb-1"></div>
                 <!-- Smoke Effect Container -->
-                <div id="candle-smoke" class="w-2 h-10 bg-gray-400/30 blur-md rounded-full opacity-0 transition-opacity duration-700 -mb-3"></div>
-                <!-- Candle Shaft -->
-                <div class="w-7 h-32 bg-gradient-to-b from-emerald-300 via-emerald-600 to-emerald-950 rounded-t-sm shadow-emerald-glow border border-emerald-400/40 relative">
-                    <div class="absolute inset-0 bg-emerald-400/10 animate-pulse"></div>
+                <div id="candle-smoke" class="w-2 h-12 bg-gray-400/30 blur-md rounded-full opacity-0 transition-opacity duration-700 -mb-4"></div>
+                <!-- Candle Pillar -->
+                <div class="w-8 h-36 bg-gradient-to-b from-emerald-300 via-emerald-600 to-emerald-950 rounded-t-md shadow-neon-emerald border border-emerald-400/50 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-emerald-400/20 animate-pulse"></div>
                 </div>
-                <!-- Candle Base Holder -->
-                <div class="w-52 h-9 bg-gradient-to-r from-emerald-950 via-emerald-800 to-emerald-950 rounded-lg shadow-2xl border border-emerald-500/40 mt-1 flex items-center justify-around px-6">
-                    <div class="w-2 h-2 rounded-full bg-emerald-300 shadow-emerald-glow"></div>
-                    <div class="w-2 h-2 rounded-full bg-emerald-300 shadow-emerald-glow"></div>
-                    <div class="w-2 h-2 rounded-full bg-emerald-300 shadow-emerald-glow"></div>
+                <!-- Pedestal -->
+                <div class="w-60 h-10 bg-gradient-to-r from-emerald-950 via-emerald-800 to-emerald-950 rounded-xl shadow-2xl border border-emerald-500/40 mt-1 flex items-center justify-around px-6">
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-neon-emerald"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-neon-emerald"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-neon-emerald"></div>
                 </div>
             </div>
 
-            <button id="blow-btn" onclick="blowOutCandle()" class="px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs uppercase font-mono tracking-widest shadow-emerald-glow transition-all">
+            <button id="blow-btn" onclick="blowOutCandle()" class="px-10 py-5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-black font-extrabold text-xs uppercase font-mono tracking-[0.2em] shadow-neon-emerald hover:scale-105 transition-all">
                 Blow Out Candle 🕯️
             </button>
         </section>
 
     </main>
 
-    <!-- Secret Wish Revealed Modal -->
-    <div id="wish-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-md w-full rounded-3xl p-8 border border-emerald-400/50 space-y-6 text-center shadow-emerald-intense relative animate-bounce-in">
-            <div class="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-400 mx-auto">
-                <i data-lucide="gift" class="w-7 h-7"></i>
+    <!-- Secret Gift Unfolded Modal -->
+    <div id="wish-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-lg w-full rounded-3xl p-8 sm:p-10 border border-emerald-400/60 space-y-6 text-center shadow-neon-intense relative">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-400 mx-auto">
+                <i data-lucide="gift" class="w-8 h-8"></i>
             </div>
-            <div class="space-y-2">
-                <h3 class="text-2xl font-serif font-bold text-white">Your Wish Is Recorded ✨</h3>
-                <p class="text-sm text-emerald-200/80 leading-relaxed">
-                    "May all your dreams convert into reality, and may happiness follow you wherever you go."
+            
+            <div class="space-y-3">
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Surprise Unfolded</span>
+                <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">Your Birthday Gift Unfolded ✨</h3>
+                <p class="text-sm sm:text-base text-emerald-100/90 font-serif leading-relaxed italic">
+                    "Unfold your surprise, Laila! This entire website, the fireworks, the affirmations, and every detail were crafted solely for you by Elissa. Remember: Money will come and go, but abundance is already on its way to you. Keep shining bright!"
                 </p>
             </div>
+
             <div class="pt-2">
-                <button onclick="closeWishModal()" class="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-all">
+                <button onclick="closeWishModal()" class="w-full py-4 rounded-xl bg-emerald-400 text-black font-extrabold text-xs uppercase font-mono tracking-widest hover:bg-emerald-300 transition-all">
                     Close & Keep Celebrating 🎉
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="relative z-10 border-t border-emerald-950 bg-black/90 backdrop-blur py-8 px-4 sm:px-8 text-center text-xs font-mono text-emerald-500/70">
+    <footer class="relative z-10 border-t border-emerald-950 bg-black/90 backdrop-blur py-10 px-4 sm:px-8 text-center text-xs font-mono text-emerald-500/70">
         <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-                DESIGNED WITH LOVE FOR LAILA(U) • BY ELISSA
+                DESIGNED WITH INFINITE LOVE FOR LAILA(U) • BY ELISSA
             </div>
             <div class="flex items-center gap-4 text-emerald-400">
-                <button onclick="triggerManualFirework()" class="hover:underline">Fireworks Burst</button>
+                <button onclick="triggerManualFirework()" class="hover:underline">Launch Fireworks</button>
                 <span>•</span>
                 <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:underline">Back to Top</button>
             </div>
@@ -411,7 +442,7 @@
     </footer>
 
     <script>
-        // Initialize Lucide Icons safely
+        // Initialize Lucide Icons
         window.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) {
                 lucide.createIcons();
@@ -433,35 +464,33 @@
             }
         }
 
-        // Firework Sound Synthesis
-        function playFireworkSound() {
+        function playSoundPulse(freq = 220, type = 'sine', duration = 0.3) {
             if (isAudioMuted) return;
             try {
                 initAudioContext();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.35);
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + duration);
                 
-                gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.35);
+                osc.stop(audioCtx.currentTime + duration);
             } catch(e) {}
         }
 
-        // Celebration Chime Sound Synthesis
         function playChimeSound() {
             if (isAudioMuted) return;
             try {
                 initAudioContext();
-                const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+                const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
                 notes.forEach((freq, index) => {
                     const osc = audioCtx.createOscillator();
                     const gain = audioCtx.createGain();
@@ -469,15 +498,15 @@
                     osc.type = 'triangle';
                     osc.frequency.value = freq;
                     
-                    const startTime = audioCtx.currentTime + (index * 0.1);
-                    gain.gain.setValueAtTime(0.2, startTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.8);
+                    const startTime = audioCtx.currentTime + (index * 0.08);
+                    gain.gain.setValueAtTime(0.18, startTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, startTime + 1.0);
                     
                     osc.connect(gain);
                     gain.connect(audioCtx.destination);
                     
                     osc.start(startTime);
-                    osc.stop(startTime + 0.8);
+                    osc.stop(startTime + 1.0);
                 });
             } catch(e) {}
         }
@@ -498,7 +527,7 @@
         }
 
         /* --------------------------------------------------
-           3 - 2 - 1 INITIAL COUNTDOWN SEQUENCE
+           3... 2... 1... COUNT-IN OVERLAY
         -------------------------------------------------- */
         let countdownActive = false;
 
@@ -519,22 +548,20 @@
 
             let count = 3;
             numElem.innerText = count;
-            playFireworkSound();
+            playSoundPulse(300, 'sine', 0.4);
 
             const timer = setInterval(() => {
                 count--;
 
                 if (count > 0) {
                     numElem.innerText = count;
-                    playFireworkSound();
+                    playSoundPulse(300 + (3 - count) * 100, 'sine', 0.4);
                     
-                    // GSAP pulse animation
                     if (window.gsap) {
-                        gsap.fromTo(numElem, { scale: 1.6, opacity: 0.2 }, { scale: 1, opacity: 1, duration: 0.4 });
+                        gsap.fromTo(numElem, { scale: 1.8, opacity: 0.2 }, { scale: 1, opacity: 1, duration: 0.4 });
                     }
                 } else {
                     clearInterval(timer);
-                    // Sequence Finish: Trigger Celebration
                     numElem.style.display = 'none';
                     subtitle.style.display = 'none';
                     nameElem.style.display = 'none';
@@ -545,27 +572,26 @@
                     glowElem.classList.remove('scale-75', 'opacity-60');
                     glowElem.classList.add('scale-150', 'opacity-100');
 
-                    // Launch multiple firework bursts
-                    for(let i = 0; i < 6; i++) {
+                    for(let i = 0; i < 7; i++) {
                         setTimeout(() => {
                             triggerManualFirework();
-                        }, i * 200);
+                        }, i * 180);
                     }
 
-                    // Confetti explosion
                     if (window.confetti) {
                         confetti({
-                            particleCount: 160,
-                            spread: 100,
+                            particleCount: 180,
+                            spread: 110,
                             origin: { y: 0.5 },
-                            colors: ['#10b981', '#34d399', '#a7f3d0', '#ffffff', '#fef08a']
+                            colors: ['#00ff88', '#34d399', '#a7f3d0', '#ffffff', '#fef08a']
                         });
                     }
 
-                    // Automatically fade out splash overlay after reveal
                     setTimeout(() => {
                         dismissSplashOverlay();
-                    }, 2400);
+                        // AUTOMATICALLY START CONTINUOUS FIREWORKS ONCE 3-2-1 FINISHES
+                        startAutomaticFireworks();
+                    }, 2600);
                 }
             }, 1000);
         }
@@ -584,6 +610,8 @@
         const canvas = document.getElementById('fireworks-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let grandFinaleInterval = null;
+        let isFinaleActive = false;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -598,17 +626,17 @@
                 this.y = y;
                 this.color = color;
                 const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 6 + 1.5;
+                const speed = Math.random() * 7.5 + 1.8;
                 this.vx = Math.cos(angle) * speed;
                 this.vy = Math.sin(angle) * speed;
                 this.alpha = 1;
-                this.decay = Math.random() * 0.02 + 0.012;
+                this.decay = Math.random() * 0.02 + 0.01;
             }
 
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.04; // Gentle gravity
+                this.vy += 0.045;
                 this.alpha -= this.decay;
             }
 
@@ -618,7 +646,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = 12;
+                ctx.shadowBlur = 14;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -626,9 +654,9 @@
         }
 
         function createFirework(x, y) {
-            playFireworkSound();
-            const colors = ['#10b981', '#34d399', '#a7f3d0', '#059669', '#fef08a', '#ffffff'];
-            for (let i = 0; i < 50; i++) {
+            playSoundPulse(180, 'triangle', 0.25);
+            const colors = ['#00ff88', '#34d399', '#a7f3d0', '#059669', '#fef08a', '#ffffff'];
+            for (let i = 0; i < 55; i++) {
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 particles.push(new Particle(x, y, color));
             }
@@ -640,8 +668,31 @@
             createFirework(x, y);
         }
 
+        function startAutomaticFireworks() {
+            if (isFinaleActive) return;
+            isFinaleActive = true;
+            const btnText = document.getElementById('finale-btn-text');
+            if (btnText) btnText.innerText = "Pause Fireworks";
+            
+            // Continuous automatic fireworks burst loop
+            grandFinaleInterval = setInterval(() => {
+                triggerManualFirework();
+            }, 600);
+        }
+
+        function toggleGrandFinale() {
+            const btnText = document.getElementById('finale-btn-text');
+            if (isFinaleActive) {
+                clearInterval(grandFinaleInterval);
+                isFinaleActive = false;
+                if (btnText) btnText.innerText = "Start Fireworks";
+            } else {
+                startAutomaticFireworks();
+            }
+        }
+
         function animateFireworks() {
-            ctx.fillStyle = 'rgba(2, 6, 4, 0.2)';
+            ctx.fillStyle = 'rgba(3, 6, 4, 0.22)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = particles.length - 1; i >= 0; i--) {
@@ -655,24 +706,27 @@
         }
         animateFireworks();
 
-        // Canvas interactive click listener
         window.addEventListener('click', (e) => {
-            // Avoid triggering when clicking buttons or modals
             if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('#splash-overlay') && !e.target.closest('#wish-modal')) {
                 createFirework(e.clientX, e.clientY);
             }
         });
 
         /* --------------------------------------------------
-           COUNTDOWN TIMER LOGIC (SEPTEMBER 24, 2026)
+           SMART DATE ENGINE (Handles Before, On, After Sept 24, 2026)
         -------------------------------------------------- */
         const targetDate = new Date('September 24, 2026 00:00:00').getTime();
 
-        function updateCountdown() {
+        function updateSmartTimer() {
             const now = new Date().getTime();
             const difference = targetDate - now;
 
+            const badgeLabel = document.getElementById('timer-badge-label');
+            const mainTitle = document.getElementById('timer-main-title');
+            const statusText = document.getElementById('countdown-status-text');
+
             if (difference > 0) {
+                // BEFORE BIRTHDAY MODE
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
@@ -682,36 +736,38 @@
                 document.getElementById('timer-hours').innerText = String(hours).padStart(2, '0');
                 document.getElementById('timer-minutes').innerText = String(minutes).padStart(2, '0');
                 document.getElementById('timer-seconds').innerText = String(seconds).padStart(2, '0');
+
+                if (badgeLabel) badgeLabel.innerText = "COUNTDOWN TO CELEBRATION";
+                if (mainTitle) mainTitle.innerText = "September 24, 2026";
+                if (statusText) statusText.innerText = "Precision timer tuned down to Laila(U)'s special moment";
             } else {
-                document.getElementById('timer-days').innerText = '00';
-                document.getElementById('timer-hours').innerText = '00';
-                document.getElementById('timer-minutes').innerText = '00';
-                document.getElementById('timer-seconds').innerText = '00';
-                document.getElementById('countdown-status-text').innerText = "🎉 IT IS LAILA'S BIRTHDAY! CELEBRATE! 🎉";
+                // ON OR AFTER BIRTHDAY MODE
+                const elapsed = Math.abs(difference);
+                const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+                document.getElementById('timer-days').innerText = String(days).padStart(2, '0');
+                document.getElementById('timer-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('timer-minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('timer-seconds').innerText = String(seconds).padStart(2, '0');
+
+                document.getElementById('label-days').innerText = "Days Celebrating";
+                document.getElementById('label-hours').innerText = "Hours";
+                document.getElementById('label-minutes').innerText = "Mins";
+                document.getElementById('label-seconds').innerText = "Secs";
+
+                if (badgeLabel) badgeLabel.innerText = "🎉 IT'S LAILA'S SPECIAL DAY! 🎉";
+                if (mainTitle) mainTitle.innerText = "Happy Birthday Laila(U)! ✨";
+                if (statusText) statusText.innerText = "Time spent celebrating Laila's joy and radiance!";
             }
         }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        setInterval(updateSmartTimer, 1000);
+        updateSmartTimer();
 
         /* --------------------------------------------------
-           INTERACTIVE MEMORY CARD TOGGLE
-        -------------------------------------------------- */
-        function toggleCard(cardElem) {
-            const secret = cardElem.querySelector('.card-secret');
-            const arrow = cardElem.querySelector('.card-arrow');
-            
-            if (secret.classList.contains('hidden')) {
-                secret.classList.remove('hidden');
-                if (arrow) arrow.style.transform = 'rotate(180deg)';
-                playChimeSound();
-            } else {
-                secret.classList.add('hidden');
-                if (arrow) arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        /* --------------------------------------------------
-           CANDLE BLOWING & SECRET WISH UNLOCK
+           CANDLE RITUAL & WISH UNLOCK
         -------------------------------------------------- */
         let isCandleOut = false;
 
@@ -727,28 +783,27 @@
             flame.style.transform = 'scale(0)';
             smoke.style.opacity = '1';
 
-            btn.innerText = "Wish Made! ✨";
-            btn.classList.remove('bg-emerald-500');
+            btn.innerText = "Surprise Unfolded! ✨";
+            btn.classList.remove('bg-emerald-400');
             btn.classList.add('bg-gray-800', 'text-emerald-400');
 
             playChimeSound();
 
-            // Fireworks cascade
             for (let i = 0; i < 6; i++) {
                 setTimeout(() => {
                     triggerManualFirework();
-                }, i * 200);
+                }, i * 180);
             }
 
             if (window.confetti) {
                 confetti({
-                    particleCount: 120,
-                    spread: 80,
-                    origin: { y: 0.7 }
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.7 },
+                    colors: ['#00ff88', '#34d399', '#fef08a']
                 });
             }
 
-            // Open Wish Modal
             setTimeout(() => {
                 document.getElementById('wish-modal').classList.remove('hidden');
             }, 800);
@@ -756,6 +811,30 @@
 
         function closeWishModal() {
             document.getElementById('wish-modal').classList.add('hidden');
+        }
+
+        function copyWishesText() {
+            const textToCopy = `Happy Birthday Laila(U)! Wishing you a fantastic day and an amazing year ahead. Hope your special day brings you all the happiness you deserve! Money will come and go, but abundance is already on its way to you. Keep shining bright! - Elissa`;
+            
+            const copyBtnText = document.getElementById('copy-btn-text');
+            
+            // Clipboard copy fallbacks
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+            
+            if (copyBtnText) copyBtnText.innerText = "Copied!";
+            playChimeSound();
+            setTimeout(() => {
+                if (copyBtnText) copyBtnText.innerText = "Copy Wishes";
+            }, 2000);
         }
 
         function scrollToSection(id) {
